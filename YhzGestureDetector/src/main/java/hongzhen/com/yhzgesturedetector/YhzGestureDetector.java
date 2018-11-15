@@ -98,7 +98,7 @@ public class YhzGestureDetector implements ScaleGestureDetector.OnScaleGestureLi
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
         if (isSingleClickAble){
-            listener.onSingleClick();
+            listener.onSingleClick(e.getRawX(),e.getRawY());
         }
         return true;
     }
@@ -106,7 +106,7 @@ public class YhzGestureDetector implements ScaleGestureDetector.OnScaleGestureLi
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         if (isDoubleClickAble){
-            listener.onDoubleClick();
+            listener.onDoubleClick(e.getRawX(),e.getRawY());
         }
         return true;
     }
@@ -124,11 +124,11 @@ public class YhzGestureDetector implements ScaleGestureDetector.OnScaleGestureLi
 
         void onDoubleFingerScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY);
 
-        void onSingleClick();
+        void onSingleClick(float x, float y);
 
-        void onDoubleClick();
+        void onDoubleClick(float rawX, float rawY);
 
-        void onLongClick();
+        void onLongClick(float rawX, float rawY);
 
         void onScale(ScaleGestureDetector detector);
 
@@ -196,7 +196,7 @@ public class YhzGestureDetector implements ScaleGestureDetector.OnScaleGestureLi
     @Override
     public void onLongPress(MotionEvent e) {
         if (isLongClickAble){
-            listener.onLongClick();
+            listener.onLongClick(e.getRawX(),e.getRawY());
         }
         Log.i(TAG, "onLongPress");
     }
